@@ -11,9 +11,19 @@
             Accueil
         </a>
 
-        <a href="#" title="Toutes les catégories" {% if app.request.get('_route') == 'category' %}class="active"{% endif %}>
+        <a href="{{ path('category') }}" title="Toutes les catégories" {% if 'category' in app.request.get('_route') %}class="active"{% endif %}>
             <i class="fas fa-list-alt"></i>
             Catégories
+        </a>
+
+        <a href="{{ path('artist') }}" title="Tous les artistes" {% if 'artist' in app.request.get('_route') %}class="active"{% endif %}>
+            <i class="fas fa-users-cog"></i>
+            Artistes
+        </a>
+
+        <a href="{{ path('album') }}" title="Tous les artistes" {% if 'album' in app.request.get('_route') %}class="active"{% endif %}>
+            <i class="fas fa-record-vinyl"></i>
+            Albums
         </a>
     </nav>
 

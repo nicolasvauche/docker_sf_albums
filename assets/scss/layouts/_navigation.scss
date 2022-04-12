@@ -4,10 +4,14 @@
     left: 0;
     right: 0;
     z-index: 9999;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    justify-content: flex-start;
     background-color: $color-primary;
+
+    @include respond(md) {
+        position: static;
+    }
 
     a {
         display: flex;

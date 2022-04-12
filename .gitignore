@@ -8,8 +8,13 @@
 !/public/css/.gitignore
 /public/img/albums/*
 !/public/img/albums/.gitignore
+!/public/img/albums/default.png
 /public/img/artists/*
 !/public/img/artists/.gitignore
+!/public/img/artists/default.png
+/public/img/categories/*
+!/public/img/categories/.gitignore
+!/public/img/categories/default.png
 /var/
 /vendor/
 ###< symfony/framework-bundle ###

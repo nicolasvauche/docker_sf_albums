@@ -1,0 +1,26 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}gérez vos catégories{% endblock %}
+{% block bodyclass %}category{% endblock %}
+
+{% block main %}
+    <section>
+        <header>
+            <h2>
+                <i class="fas fa-list-alt"></i>
+                modifier une catégorie
+            </h2>
+        </header>
+
+        {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+        <div class="actions">
+            <a href="{{ path('category') }}">
+                <i class="fas fa-arrow-alt-circle-left"></i>
+                retour à la liste
+            </a>
+
+            {{ include('category/_delete_form.html.twig') }}
+        </div>
+    </section>
+{% endblock %}

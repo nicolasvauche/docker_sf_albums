@@ -1,0 +1,16 @@
+{{ form_start(form, {'attr': {'class': 'app-form'}}) }}
+    {{ form_widget(form) }}
+
+    {% if category %}
+        <img src="
+                    {% if category.cover %}
+                     {{ asset('img/categories/' ~ category.cover) }}
+                    {% else %}
+                        {{ asset('img/categories/default.png') }}
+                    {% endif %}
+                "
+                alt="{{ category.name }}"
+        />
+    {% endif %}
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

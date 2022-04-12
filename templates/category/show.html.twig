@@ -1,0 +1,50 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}gérez vos catégories{% endblock %}
+{% block bodyclass %}category{% endblock %}
+
+{% block main %}
+    <section>
+        <header>
+            <h2>
+                <i class="fas fa-list-alt"></i>
+                détails d'une catégorie
+            </h2>
+        </header>
+
+        <main>
+            <img src="
+                        {% if category.cover %}
+                            {{ asset('img/categories/' ~ category.cover) }}
+                        {% else %}
+                            {{ asset('img/categories/default.png') }}
+                        {% endif %}
+                    "
+                    class="grid-item-image"
+                    alt="{{ category.name }}"
+            />
+
+            <h3>{{ category.name }}</h3>
+        </main>
+
+        <aside>
+            <h2>
+                <i class="fas fa-record-vinyl"></i>
+                {{ category.albums | length }} album{% if category.albums | length > 1 %}s{% endif %}
+            </h2>
+        </aside>
+
+        <div class="actions">
+            <a href="{{ path('category') }}">
+                <i class="fas fa-arrow-alt-circle-left"></i>
+                retour à la liste
+            </a>
+
+            <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                <i class="fas fa-edit"></i>
+            </a>
+
+            {{ include('category/_delete_form.html.twig') }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}gérez vos catégories{% endblock %}
+{% block bodyclass %}category{% endblock %}
+
+{% block main %}
+    <section>
+        <header>
+            <h2>
+                <i class="fas fa-list-alt"></i>
+                toutes les catégories
+            </h2>
+        </header>
+
+        {% include 'partials/_categories.html.twig' with {'categories': categories} %}
+
+        <div class="actions">
+            <a href="{{ path('category.new') }}">
+                <i class="fas fa-plus-circle"></i>
+                nouvelle catégorie
+            </a>
+        </div>
+    </section>
+{% endblock %}

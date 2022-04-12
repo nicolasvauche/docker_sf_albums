@@ -1,20 +1,9 @@
 {% extends 'layouts/default.html.twig' %}
 
 {% block title %}on écoute quoi maintenant ?{% endblock %}
+{% block bodyclass %}home{% endblock %}
 
 {% block main %}
-    <section class="lastlistened">
-        <header>
-            <h2>
-                <i class="fas fa-fast-forward"></i>
-                dernières écoutes
-            </h2>
-            <p>Les derniers albums que vous avez écoutés :</p>
-        </header>
-
-        {% include 'partials/_albums.html.twig' %}
-    </section>
-
     <section class="suggest">
         <header>
             <h2>
@@ -27,15 +16,29 @@
         {% include 'partials/_albums.html.twig' %}
     </section>
 
-    <section class="categories">
+    <section class="lastlistened">
         <header>
             <h2>
-                <i class="fas fa-list-alt"></i>
-                par catégorie
+                <i class="fas fa-fast-forward"></i>
+                dernières écoutes
             </h2>
-            <p>Voici la liste de vos catégories de musiques :</p>
+            <p>Les derniers albums que vous avez écoutés :</p>
         </header>
 
-        {% include 'partials/_categories.html.twig' %}
+        {% include 'partials/_albums.html.twig' %}
     </section>
+
+    {% if categories | length > 0 %}
+        <section class="categories">
+            <header>
+                <h2>
+                    <i class="fas fa-list-alt"></i>
+                    par catégorie
+                </h2>
+                <p>Voici la liste de vos catégories de musiques :</p>
+            </header>
+
+            {% include 'partials/_categories.html.twig' with {'categories': categories, 'home': true} %}
+        </section>
+    {% endif %}
 {% endblock %}

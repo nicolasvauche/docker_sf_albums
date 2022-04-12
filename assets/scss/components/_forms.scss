@@ -1,0 +1,44 @@
+.app-form {
+    margin: 0 1rem;
+    text-align: center;
+
+    & > div {
+        div {
+            margin-bottom: 1rem;
+
+            label {
+                display: block;
+                margin-bottom: 0.25rem;
+                font-weight: bold;
+            }
+
+            .form-control {
+                box-sizing: border-box;
+                padding: 0.5rem 1rem;
+                width: 100%;
+                font-family: $font-family-primary;
+                font-size: 1rem;
+                color: $color-black;
+                background-color: $color-white;
+                border: 1px solid transparent;
+            }
+        }
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        height: 120px;
+    }
+
+    button {
+        margin-top: 1rem;
+        padding: 0.5rem 1.5rem;
+        font-family: $font-family-primary;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $color-white;
+        background-color: $color-primary;
+        border: none;
+    }
+}

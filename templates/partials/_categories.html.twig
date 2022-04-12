@@ -1,14 +1,33 @@
 <div class="app-grid two alt">
-    {% for i in range(0, 3) %}
+    {% for category in categories %}
         <article class="grid-item">
-            <a href="#">
-                <img src="{{ asset('img/category.png') }}" alt="Nom de la catégorie" />
-                <h3 class="grid-item-title">Catégorie</h3>
-                <p class="grid-item-text">
-                    <i class="fas fa-record-vinyl"></i>
-                    9999 albums
-                </p>
+            {% if home is not defined %}
+                <div class="grid-item-actions">
+                    <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    {{ include('category/_delete_form.html.twig') }}
+                </div>
+            {% endif %}
+            <a href="{{ path('category.show', {'slug': category.slug}) }}">
+                <img src="
+                        {% if category.cover %}
+                            {{ asset('img/categories/' ~ category.cover) }}
+                        {% else %}
+                            {{ asset('img/categories/default.png') }}
+                        {% endif %}
+                    "
+                        class="grid-item-image"
+                        alt="{{ category.name }}"
+                />
             </a>
+            <h3 class="grid-item-title">
+                <a href="{{ path('category.show', {'slug': category.slug}) }}">{{ category.name }}</a>
+            </h3>
+            <p class="grid-item-text">
+                <i class="fas fa-record-vinyl"></i>
+                {{ category.albums | length }} album{% if category.albums | length > 1 %}s{% endif %}
+            </p>
         </article>
     {% endfor %}
 </div>
