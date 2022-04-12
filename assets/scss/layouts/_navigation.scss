@@ -1,0 +1,32 @@
+.app-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: $color-primary;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem 0;
+        font-size: 0.5rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color-white;
+
+        i {
+            font-size: 2rem;
+        }
+
+        &.active {
+            color: $color-black;
+            background-color: $color-secondary;
+        }
+    }
+}

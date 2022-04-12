@@ -1,0 +1,16 @@
+.app-main {
+    margin-bottom: 3.75rem;
+
+    section {
+        padding: 1.5rem 0;
+        background-color: $color-secondary;
+
+        header {
+            padding: 0 1.5em;
+        }
+
+        &:nth-child(even) {
+            background-color: $color-white;
+        }
+    }
+}

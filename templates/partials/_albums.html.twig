@@ -1,0 +1,15 @@
+<div class="app-grid two">
+    {% for i in range(0, 8) %}
+        <article class="grid-item">
+            <a href="#">
+                <img src="{{ asset('img/vinyle.png') }}" alt="Titre de l'album" />
+                <h3 class="grid-item-title">Titre de l'album</h3>
+                <h4 class="grid-item-subtitle">Artiste de l'album</h4>
+                <p class="grid-item-text">
+                    <i class="fas fa-headphones"></i>
+                    9999 écoutes
+                </p>
+            </a>
+        </article>
+    {% endfor %}
+</div>

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header class="app-header">
+        <h1>{% block title %}{% endblock %}</h1>
+    </header>
+
+    <nav class="app-navigation">
+        <a href="{{ path('home') }}" title="Retour à l'accueil" {% if app.request.get('_route') == 'home' %}class="active"{% endif %}>
+            <i class="fas fa-home"></i>
+            Accueil
+        </a>
+
+        <a href="#" title="Toutes les catégories" {% if app.request.get('_route') == 'category' %}class="active"{% endif %}>
+            <i class="fas fa-list-alt"></i>
+            Catégories
+        </a>
+    </nav>
+
+    <main class="app-main">
+        {% block main %}{% endblock %}
+    </main>
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="app-grid two alt">
+    {% for i in range(0, 3) %}
+        <article class="grid-item">
+            <a href="#">
+                <img src="{{ asset('img/category.png') }}" alt="Nom de la catégorie" />
+                <h3 class="grid-item-title">Catégorie</h3>
+                <p class="grid-item-text">
+                    <i class="fas fa-record-vinyl"></i>
+                    9999 albums
+                </p>
+            </a>
+        </article>
+    {% endfor %}
+</div>

@@ -1,0 +1,38 @@
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $color-white;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    i {
+        margin-right: 0.5rem;
+        color: $color-primary;
+    }
+}
+
+h3 {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+
+    &:last-of-type,
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

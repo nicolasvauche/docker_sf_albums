@@ -1,0 +1,29 @@
+/* Default breakpoints */
+$breakpoint-sm: 768px;
+$breakpoint-md: 1025px;
+$breakpoint-lg: 1201px;
+$breakpoint-xl: 1921px;
+
+/* Mixin: Media queries */
+@mixin respond($breakpoint) {
+    @if ($breakpoint == sm) {
+        @media (min-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+    @if ($breakpoint == md) {
+        @media (min-width: $breakpoint-md) {
+            @content;
+        }
+    }
+    @if ($breakpoint == lg) {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+    @if ($breakpoint == xl) {
+        @media (min-width: $breakpoint-xl) {
+            @content;
+        }
+    }
+}

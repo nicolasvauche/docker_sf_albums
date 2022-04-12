@@ -1,0 +1,104 @@
+.app-grid {
+    margin-bottom: -0.5rem;
+    overflow-x: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    scroll-snap-type: x mandatory;
+
+    @include respond(sm) {
+        overflow-x: initial;
+        display: grid;
+        grid-gap: 1.5rem;
+    }
+
+    @include respond(md) {
+        grid-gap: 2rem;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &.two {
+        grid-template-columns: repeat(2, 1fr);
+
+        @include respond(sm) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include respond(md) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .grid-item {
+        margin: 1.25rem 1.25rem 1.5rem;
+        padding: 0.5rem;
+        flex: 0 0 calc(75% - 3.5rem);
+        scroll-snap-align: center;
+        text-align: center;
+        color: $color-white;
+        background-color: $color-primary;
+        box-shadow: 0.25rem 0.25rem 0.5rem rgba($color-black, 0.5);
+        opacity: 0.9;
+        transition: all 0.3s;
+        border-radius: 0.5rem;
+
+        @include respond(sm) {
+            margin: 0;
+            width: auto;
+            border-radius: 0;
+
+            &:nth-child(4n+1) {
+                border-top-left-radius: 0.5rem;
+                border-bottom-left-radius: 0.5rem;
+            }
+
+            &:nth-child(4n+4) {
+                border-top-right-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+        }
+
+        &:hover {
+            box-shadow: 0.75rem 0.75rem 0.5rem rgba($color-black, 0.5);
+            transform: scale(1.05);
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .grid-item-subtitle {
+            color: $color-black;
+        }
+
+        .grid-item-text {
+            font-size: 0.75rem;
+
+            i {
+                font-size: 0.9rem;
+                color: $color-secondary;
+            }
+        }
+    }
+
+    &.alt {
+        .grid-item {
+            color: $color-black;
+            background-color: $color-white;
+        }
+
+        .grid-item-title {
+            color: $color-primary;
+        }
+
+        .grid-item-text {
+            i {
+                color: $color-primary;
+            }
+        }
+    }
+}

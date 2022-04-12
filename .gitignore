@@ -1,0 +1,31 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/public/css/*
+!/public/css/.gitignore
+/public/img/albums/*
+!/public/img/albums/.gitignore
+/public/img/artists/*
+!/public/img/artists/.gitignore
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> custom/global ###
+.idea/
+.vscode/
+.DS_Store
+###< custom/global ###
