@@ -32,8 +32,8 @@
         flex: 0 0 calc(75% - 3.5rem);
         scroll-snap-align: center;
         text-align: center;
-        color: $color-white;
-        background-color: $color-primary;
+        color: $color-black;
+        background-color: $color-secondary;
         box-shadow: 0.25rem 0.25rem 0.5rem rgba($color-black, 0.5);
         opacity: 0.9;
         transition: all 0.3s;
@@ -112,8 +112,32 @@
             box-sizing: border-box;
         }
 
+        .grid-item-image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            height: 250px;
+            background: url('../img/albums/default.png') no-repeat center center;
+            background-size: contain;
+
+            & > .grid-item-image {
+                margin-bottom: 0;
+                padding: 0;
+                width: 5rem;
+                height: 5rem;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        .grid-item-title {
+            color: $color-primary;
+        }
+
         .grid-item-subtitle {
-            color: $color-black;
+            font-size: 0.8rem;
         }
 
         .grid-item-text {
@@ -121,7 +145,7 @@
 
             i {
                 font-size: 0.9rem;
-                color: $color-secondary;
+                color: $color-primary;
             }
         }
 

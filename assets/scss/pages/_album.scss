@@ -1,0 +1,30 @@
+body.album {
+    .app-main {
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: calc(100vh - 10rem);
+
+            .grid-item-image-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+                padding: 0.5rem;
+                height: 250px;
+                background: url('../img/albums/default.png') no-repeat center center;
+                background-size: contain;
+
+                & > .grid-item-image {
+                    margin-bottom: 0;
+                    padding: 0;
+                    width: 6rem;
+                    height: 6rem;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
