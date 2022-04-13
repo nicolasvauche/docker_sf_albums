@@ -17,10 +17,8 @@ class Album
     #[ORM\Column(type: 'string', length: 255)]
     private $title;
 
-    /**
-     * @Gedmo\Slug(fields={"title"})
-     */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Gedmo\Slug(fields: ['title'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]

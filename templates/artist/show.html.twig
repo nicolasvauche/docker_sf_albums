@@ -32,6 +32,8 @@
                 <i class="fas fa-record-vinyl"></i>
                 {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
             </h2>
+
+            {% include 'partials/_albums.html.twig' with {'albums': artist.albums, 'alt': ''} %}
         </aside>
 
         <div class="actions">

@@ -20,7 +20,7 @@ class AlbumController extends AbstractController
     public function index(AlbumRepository $albumRepository): Response
     {
         return $this->render('album/index.html.twig', [
-            'albums' => $albumRepository->findAll(),
+            'albums' => $albumRepository->findBy([], ['title' => 'asc']),
         ]);
     }
 

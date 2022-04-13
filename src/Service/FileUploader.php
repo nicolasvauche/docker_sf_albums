@@ -23,10 +23,12 @@ class FileUploader
 
     public function delete($targetDirectory, $filename)
     {
-        try {
-            unlink($targetDirectory . '/' . $filename);
-        } catch (FileException $e) {
-            // ... handle exception if something happens during file upload
+        if (!empty($filename)) {
+            try {
+                unlink($targetDirectory . '/' . $filename);
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
         }
     }
 }

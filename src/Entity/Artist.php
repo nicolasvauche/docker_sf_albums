@@ -19,16 +19,15 @@ class Artist
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    /**
-     * @Gedmo\Slug(fields={"name"})
-     */
     #[ORM\Column(type: 'string', length: 255)]
+    #[Gedmo\Slug(fields: ['name'])]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $cover;
 
     #[ORM\OneToMany(mappedBy: 'artist', targetEntity: Album::class, orphanRemoval: true)]
+    #[ORM\OrderBy(['year' => 'asc'])]
     private $albums;
 
     public function __construct()
