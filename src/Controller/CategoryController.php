@@ -34,7 +34,7 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $category = $form->getData();
 
-            /** @var UploadedFile $brochureFile */
+            /** @var UploadedFile $categoryCoverFile */
             $categoryCoverFile = $form->get('cover')->getData();
 
             if ($categoryCoverFile) {
@@ -68,7 +68,7 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $brochureFile */
+            /** @var UploadedFile $categoryCoverFile */
             $categoryCoverFile = $form->get('cover')->getData();
 
             if ($categoryCoverFile) {
@@ -80,6 +80,7 @@ class CategoryController extends AbstractController
             }
 
             $categoryRepository->add($category);
+
             return $this->redirectToRoute('category', [], Response::HTTP_SEE_OTHER);
         }
 

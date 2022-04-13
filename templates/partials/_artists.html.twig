@@ -1,0 +1,33 @@
+<div class="app-grid {{ alt }}">
+    {% for artist in artists %}
+        <article class="grid-item">
+            {% if home is not defined %}
+                <div class="grid-item-actions">
+                    <a href="{{ path('artist.edit', {'slug': artist.slug}) }}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    {{ include('artist/_delete_form.html.twig') }}
+                </div>
+            {% endif %}
+            <a href="{{ path('artist.show', {'slug': artist.slug}) }}">
+                <img src="
+                        {% if artist.cover %}
+                            {{ asset('img/artists/' ~ artist.cover) }}
+                        {% else %}
+                            {{ asset('img/artists/default.png') }}
+                        {% endif %}
+                    "
+                        class="grid-item-image"
+                        alt="{{ artist.name }}"
+                />
+            </a>
+            <h3 class="grid-item-title">
+                <a href="{{ path('artist.show', {'slug': artist.slug}) }}">{{ artist.name }}</a>
+            </h3>
+            <p class="grid-item-text">
+                <i class="fas fa-record-vinyl"></i>
+                {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
+            </p>
+        </article>
+    {% endfor %}
+</div>

@@ -1,6 +1,6 @@
 {% extends 'layouts/default.html.twig' %}
 
-{% block title %}modifier un artiste{% endblock %}
+{% block title %}gérez vos artistes{% endblock %}
 {% block bodyclass %}artist{% endblock %}
 
 {% block main %}
@@ -8,14 +8,19 @@
         <header>
             <h2>
                 <i class="fas fa-list-alt"></i>
-                gérez vos artistes
+                modifier un artiste
             </h2>
         </header>
 
-        {{ include('artist/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('artist/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-        <a href="{{ path('artist') }}">back to list</a>
+        <div class="actions">
+            <a href="{{ path('artist') }}">
+                <i class="fas fa-arrow-alt-circle-left"></i>
+                retour à la liste
+            </a>
 
-        {{ include('artist/_delete_form.html.twig') }}
+            {{ include('artist/_delete_form.html.twig') }}
+        </div>
     </section>
 {% endblock %}

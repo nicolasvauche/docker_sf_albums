@@ -29,6 +29,7 @@
                 height: 250px;
                 object-fit: contain;
                 background-color: $color-white;
+                border: 0.25rem solid $color-primary;
                 border-radius: 1.5rem;
             }
 
@@ -72,6 +73,7 @@
                 color: $color-black;
                 background: none;
                 border: none;
+                cursor: pointer;
 
                 i {
                     margin-right: 0.5rem;

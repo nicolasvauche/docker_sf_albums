@@ -1,45 +1,24 @@
 {% extends 'layouts/default.html.twig' %}
 
-{% block title %}tous les artistes{% endblock %}
+{% block title %}gérez vos artistes{% endblock %}
 {% block bodyclass %}artist{% endblock %}
 
 {% block main %}
     <section>
         <header>
             <h2>
-                <i class="fas fa-list-alt"></i>
-                gérez vos artistes
+                <i class="fas fa-users-cog"></i>
+                tous les artistes
             </h2>
         </header>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Cover</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for artist in artists %}
-                    <tr>
-                        <td>{{ artist.id }}</td>
-                        <td>{{ artist.name }}</td>
-                        <td>{{ artist.cover }}</td>
-                        <td>
-                            <a href="{{ path('artist.show', {'id': artist.id}) }}">show</a>
-                            <a href="{{ path('artist.edit', {'id': artist.id}) }}">edit</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="4">no records found</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% include 'partials/_artists.html.twig' with {'artists': artists, 'alt': 'alt'} %}
 
-        <a href="{{ path('artist.new') }}">Create new</a>
+        <div class="actions">
+            <a href="{{ path('artist.new') }}">
+                <i class="fas fa-plus-circle"></i>
+                nouvel artiste
+            </a>
+        </div>
     </section>
 {% endblock %}

@@ -1,4 +1,16 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'class': 'app-form'}}) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    {% if artist %}
+        <img src="
+                    {% if artist.cover %}
+                     {{ asset('img/artists/' ~ artist.cover) }}
+                    {% else %}
+                        {{ asset('img/artists/default.png') }}
+                    {% endif %}
+                "
+                alt="{{ artist.name }}"
+        />
+    {% endif %}
+<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

@@ -6,6 +6,8 @@
 parameters:
     locale: 'fr'
     images_categories: '%kernel.project_dir%/public/img/categories'
+    images_artists: '%kernel.project_dir%/public/img/artists'
+    images_albums: '%kernel.project_dir%/public/img/albums'
 
 services:
     # default configuration for services in *this* file

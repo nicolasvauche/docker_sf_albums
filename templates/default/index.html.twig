@@ -13,7 +13,7 @@
             <p>Voici une petite sélection basée sur vos goûts :</p>
         </header>
 
-        {% include 'partials/_albums.html.twig' %}
+        {% include 'partials/_albums.html.twig' with {'alt': 'alt'} %}
     </section>
 
     <section class="lastlistened">
@@ -25,7 +25,7 @@
             <p>Les derniers albums que vous avez écoutés :</p>
         </header>
 
-        {% include 'partials/_albums.html.twig' %}
+        {% include 'partials/_albums.html.twig' with {'alt': ''} %}
     </section>
 
     {% if categories | length > 0 %}
@@ -38,7 +38,21 @@
                 <p>Voici la liste de vos catégories de musiques :</p>
             </header>
 
-            {% include 'partials/_categories.html.twig' with {'categories': categories, 'home': true} %}
+            {% include 'partials/_categories.html.twig' with {'categories': categories, 'home': true, 'alt': 'alt'} %}
+        </section>
+    {% endif %}
+
+    {% if artists | length > 0 %}
+        <section class="artists">
+            <header>
+                <h2>
+                    <i class="fas fa-list-alt"></i>
+                    ou par artiste
+                </h2>
+                <p>Voici la liste de vos artistes :</p>
+            </header>
+
+            {% include 'partials/_artists.html.twig' with {'artists': artists, 'home': true, 'alt': ''} %}
         </section>
     {% endif %}
 {% endblock %}
