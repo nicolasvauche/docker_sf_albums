@@ -113,5 +113,13 @@
                 }
             }
         }
+
+        .btn-play {
+            margin-left: auto;
+
+            i {
+                color: $color-green !important;
+            }
+        }
     }
 }

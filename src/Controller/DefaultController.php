@@ -15,9 +15,10 @@ class DefaultController extends AbstractController
     public function index(CategoryRepository $categoryRepository, ArtistRepository $artistRepository, AlbumRepository $albumRepository): Response
     {
         return $this->render('default/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-            'artists' => $artistRepository->findAll(),
-            'albums' => $albumRepository->findAll(),
+            'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
+            'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
+            'albumsPlayed' => $albumRepository->findByMostPlayed(),
+            'albumsLastListened' => $albumRepository->findByLastListened(),
         ]);
     }
 }

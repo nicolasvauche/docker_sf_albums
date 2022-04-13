@@ -1,5 +1,8 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    date:
+        format: 'd/m/Y H:i'
+        timezone: '%env(APP_TIMEZONE)%'
 
 when@test:
     twig:

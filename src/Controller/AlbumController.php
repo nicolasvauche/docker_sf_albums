@@ -8,6 +8,7 @@ use App\Repository\AlbumRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -100,5 +101,18 @@ class AlbumController extends AbstractController
         }
 
         return $this->redirectToRoute('album', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/ecouter/{id}', name: 'album.play', methods: ['GET'])]
+    public function play(Request $request, Album $album, AlbumRepository $albumRepository): Response
+    {
+        if ($request->isXmlHttpRequest()) {
+            $album->setNbPlays($album->getNbPlays() + 1)
+                ->setLastListened(new \DateTime());
+            $albumRepository->add($album);
+            return new JsonResponse(['nbPlays' => $album->getNbPlays(), 'lastListened' => $album->getLastListened()->format('d/m/Y')], 200);
+        } else {
+            return new JsonResponse(['message' => 'Accès non autorisé'], 405);
+        }
     }
 }

@@ -4,36 +4,40 @@
 {% block bodyclass %}home{% endblock %}
 
 {% block main %}
-    <section class="suggest">
-        <header>
-            <h2>
-                <i class="fas fa-lightbulb"></i>
-                pourquoi pas…
-            </h2>
-            <p>Voici une petite sélection basée sur vos goûts :</p>
-        </header>
+    {% if albumsPlayed %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fas fa-lightbulb"></i>
+                    pourquoi pas…
+                </h2>
+                <p>Voici une petite sélection basée sur vos goûts :</p>
+            </header>
 
-        {% include 'partials/_albums.html.twig' with {'alt': 'alt'} %}
-    </section>
+            {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true, 'alt': 'alt'} %}
+        </section>
+    {% endif %}
 
-    <section class="lastlistened">
-        <header>
-            <h2>
-                <i class="fas fa-fast-forward"></i>
-                dernières écoutes
-            </h2>
-            <p>Les derniers albums que vous avez écoutés :</p>
-        </header>
+    {% if albumsLastListened %}
+        <section class="lastlistened">
+            <header>
+                <h2>
+                    <i class="fas fa-fast-forward"></i>
+                    dernières écoutes
+                </h2>
+                <p>Les derniers albums que vous avez écoutés :</p>
+            </header>
 
-        {% include 'partials/_albums.html.twig' with {'alt': ''} %}
-    </section>
+            {% include 'partials/_albums.html.twig' with {'albums': albumsLastListened, 'home': true, 'alt': ''} %}
+        </section>
+    {% endif %}
 
     {% if categories | length > 0 %}
         <section class="categories">
             <header>
                 <h2>
                     <i class="fas fa-list-alt"></i>
-                    par catégorie
+                    dans une catégorie
                 </h2>
                 <p>Voici la liste de vos catégories de musiques :</p>
             </header>

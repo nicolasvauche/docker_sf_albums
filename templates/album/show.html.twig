@@ -28,14 +28,30 @@
 
             <h3>{{ album.title }}</h3>
             <p>{{ album.year }}</p>
-            <h4>{{ album.artist.name }}</h4>
-            <h5>{{ album.category.name }}</h5>
+            <h4>
+                <a href="{{ path('artist.show', {'slug': album.artist.slug}) }}">{{ album.artist.name }}</a>
+            </h4>
+            <h5>
+                <a href="{{ path('category.show', {'slug': album.category.slug}) }}">{{ album.category.name }}</a>
+            </h5>
         </main>
 
         <aside>
             <h2>
                 <i class="fas fa-headphones"></i>
-                {{ album.nbPlays }} écoute{% if album.nbPlays > 1 %}s{% endif %}
+                <span class="nbplays">{{ album.nbPlays }}</span>
+
+                <span class="lastlistened">
+                    {% if album.lastListened %}
+                        &nbsp;~&nbsp;{{ album.lastListened | date }}
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                </span>
+
+                <a href="#" class="btn-play" data-album="{{ album.id }}">
+                    <i class="fas fa-play"></i>
+                </a>
             </h2>
         </aside>
 

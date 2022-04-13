@@ -6,6 +6,11 @@ body.album {
             justify-content: space-between;
             min-height: calc(100vh - 10rem);
 
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
             .grid-item-image-container {
                 display: flex;
                 align-items: center;
@@ -24,6 +29,17 @@ body.album {
                     object-fit: cover;
                     border: none;
                     border-radius: 50%;
+                }
+            }
+
+            aside {
+                margin: 0 1rem;
+                padding: 0.5rem 0.5rem 0.25rem;
+                border-radius: 0.5rem;
+                box-shadow: inset 2px 2px 2px rgba($color-black, 0.5);
+
+                h2 {
+                    font-size: 1rem;
                 }
             }
         }
