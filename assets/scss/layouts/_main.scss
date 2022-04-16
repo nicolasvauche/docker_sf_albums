@@ -7,7 +7,7 @@
 
     section {
         padding: 1.5rem 0;
-        background-color: $color-secondary;
+        background-color: $color-white;
 
         @include respond(sm) {
             padding: 1.5rem;
@@ -28,9 +28,6 @@
                 width: 100%;
                 height: 250px;
                 object-fit: contain;
-                background-color: $color-white;
-                border: 0.25rem solid $color-primary;
-                border-radius: 1.5rem;
             }
 
             h3 {
@@ -76,7 +73,29 @@
         }
 
         &:nth-child(even) {
-            background-color: $color-white;
+            background-color: $color-secondary;
+
+            .app-grid {
+                .grid-item {
+                    color: $color-black;
+                    background-color: $color-white;
+
+                    .grid-item-title {
+                        color: $color-primary;
+                    }
+
+                    .grid-item-text {
+                        i {
+                            color: $color-primary;
+                        }
+                    }
+
+                    .grid-item-stats {
+                        background-color: $color-secondary;
+                    }
+                }
+            }
+
         }
 
         & > .actions {

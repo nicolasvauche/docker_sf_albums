@@ -12,7 +12,7 @@
             </h2>
         </header>
 
-        {% include 'partials/_categories.html.twig' with {'categories': categories, 'alt': 'alt'} %}
+        {% include 'partials/_categories.html.twig' with {'categories': categories} %}
 
         <div class="actions">
             <a href="{{ path('category.new') }}">

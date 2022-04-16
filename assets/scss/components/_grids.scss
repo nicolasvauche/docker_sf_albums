@@ -197,25 +197,4 @@
             }
         }
     }
-
-    &.alt {
-        .grid-item {
-            color: $color-black;
-            background-color: $color-white;
-
-            .grid-item-title {
-                color: $color-primary;
-            }
-
-            .grid-item-text {
-                i {
-                    color: $color-primary;
-                }
-            }
-
-            .grid-item-stats {
-                background-color: $color-secondary;
-            }
-        }
-    }
 }

@@ -48,9 +48,9 @@ class AlbumRepository extends ServiceEntityRepository
     public function findByMostPlayed()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.nbPlays > 0')
+            ->andWhere('a.nbPlays > 1')
             ->orderBy('a.nbPlays', 'DESC')
-            ->setMaxResults(6)
+            ->setMaxResults(8)
             ->getQuery()
             ->getResult()
             ;
@@ -61,7 +61,7 @@ class AlbumRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.lastListened IS NOT NULL')
             ->orderBy('a.lastListened', 'DESC')
-            ->setMaxResults(6)
+            ->setMaxResults(8)
             ->getQuery()
             ->getResult()
             ;

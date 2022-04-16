@@ -57,7 +57,7 @@ class AlbumType extends AbstractType
                     'attr' =>
                         [
                             'class' => 'form-control',
-                            'placeholder' => 'ex: 1999',
+                            'placeholder' => 'ex: 1969',
                             'minlength' => 4,
                             'maxlength' => 4,
                         ],

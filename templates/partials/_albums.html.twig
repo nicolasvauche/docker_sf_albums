@@ -1,4 +1,4 @@
-<div class="app-grid {{ alt }}">
+<div class="app-grid">
     {% for album in albums %}
         <article class="grid-item">
             {% if home is not defined %}
@@ -28,6 +28,11 @@
             <h3 class="grid-item-title">
                 <a href="{{ path('album.show', {'slug': album.slug}) }}">{{ album.title }}</a>
             </h3>
+            {% if home is not defined %}
+                <h4 class="grid-item-subtitle">
+                    {{ album.year }}
+                </h4>
+            {% endif %}
             <h4 class="grid-item-subtitle">
                 <a href="{{ path('artist.show', {'slug': album.artist.slug}) }}">{{ album.artist.name }}</a>
             </h4>

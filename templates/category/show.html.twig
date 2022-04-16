@@ -33,7 +33,7 @@
                 {{ category.albums | length }} album{% if category.albums | length > 1 %}s{% endif %}
             </h2>
 
-            {% include 'partials/_albums.html.twig' with {'albums': category.albums, 'alt': ''} %}
+            {% include 'partials/_albums.html.twig' with {'albums': category.albums} %}
         </aside>
 
         <div class="actions">

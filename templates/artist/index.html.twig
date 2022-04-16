@@ -8,11 +8,11 @@
         <header>
             <h2>
                 <i class="fas fa-users-cog"></i>
-                tous les artistes
+                tous les artistes ({{ artists | length}})
             </h2>
         </header>
 
-        {% include 'partials/_artists.html.twig' with {'artists': artists, 'alt': 'alt'} %}
+        {% include 'partials/_artists.html.twig' with {'artists': artists} %}
 
         <div class="actions">
             <a href="{{ path('artist.new') }}">

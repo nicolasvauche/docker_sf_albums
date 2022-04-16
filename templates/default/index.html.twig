@@ -4,20 +4,6 @@
 {% block bodyclass %}home{% endblock %}
 
 {% block main %}
-    {% if albumsPlayed %}
-        <section class="suggest">
-            <header>
-                <h2>
-                    <i class="fas fa-lightbulb"></i>
-                    pourquoi pas…
-                </h2>
-                <p>Voici une petite sélection basée sur vos goûts :</p>
-            </header>
-
-            {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true, 'alt': 'alt'} %}
-        </section>
-    {% endif %}
-
     {% if albumsLastListened %}
         <section class="lastlistened">
             <header>
@@ -28,7 +14,21 @@
                 <p>Les derniers albums que vous avez écoutés :</p>
             </header>
 
-            {% include 'partials/_albums.html.twig' with {'albums': albumsLastListened, 'home': true, 'alt': ''} %}
+            {% include 'partials/_albums.html.twig' with {'albums': albumsLastListened, 'home': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsPlayed %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fas fa-heart"></i>
+                    souvent écoutés
+                </h2>
+                <p>vous écoutez souvent ça :</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true} %}
         </section>
     {% endif %}
 
@@ -42,11 +42,11 @@
                 <p>Voici la liste de vos catégories de musiques :</p>
             </header>
 
-            {% include 'partials/_categories.html.twig' with {'categories': categories, 'home': true, 'alt': 'alt'} %}
+            {% include 'partials/_categories.html.twig' with {'categories': categories, 'home': true} %}
         </section>
     {% endif %}
 
-    {% if artists | length > 0 %}
+    {% if artists | length > 0 and false %}
         <section class="artists">
             <header>
                 <h2>
@@ -56,7 +56,7 @@
                 <p>Voici la liste de vos artistes :</p>
             </header>
 
-            {% include 'partials/_artists.html.twig' with {'artists': artists, 'home': true, 'alt': ''} %}
+            {% include 'partials/_artists.html.twig' with {'artists': artists, 'home': true} %}
         </section>
     {% endif %}
 {% endblock %}
