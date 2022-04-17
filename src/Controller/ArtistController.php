@@ -44,7 +44,7 @@ class ArtistController extends AbstractController
 
             $artistRepository->add($artist);
 
-            return $this->redirectToRoute('artist', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('artist.show', ['slug' => $artist->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artist/new.html.twig', [
@@ -81,7 +81,7 @@ class ArtistController extends AbstractController
 
             $artistRepository->add($artist);
 
-            return $this->redirectToRoute('artist', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('artist.show', ['slug' => $artist->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('artist/edit.html.twig', [
@@ -98,6 +98,6 @@ class ArtistController extends AbstractController
             $artistRepository->remove($artist);
         }
 
-        return $this->redirectToRoute('artist', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
 }

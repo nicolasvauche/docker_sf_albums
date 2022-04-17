@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Album;
+use App\Entity\Artist;
 use App\Form\AlbumType;
 use App\Repository\AlbumRepository;
+use App\Repository\ArtistRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -25,11 +27,15 @@ class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route('/ajouter', name: 'album.new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AlbumRepository $albumRepository, SluggerInterface $slugger, FileUploader $fileUploader): Response
+    #[Route('/ajouter/{slug}', name: 'album.new', defaults: ['slug' => null], methods: ['GET', 'POST'])]
+    public function new(Request $request, AlbumRepository $albumRepository, ArtistRepository $artistRepository, SluggerInterface $slugger, FileUploader $fileUploader, $slug): Response
     {
         $album = new Album();
         $album->setNbPlays(0);
+        if ($slug) {
+            $album->setArtist($artistRepository->findOneBy(['slug' => $slug]));
+        }
+
         $form = $this->createForm(AlbumType::class, $album);
         $form->handleRequest($request);
 
@@ -46,7 +52,7 @@ class AlbumController extends AbstractController
 
             $albumRepository->add($album);
 
-            return $this->redirectToRoute('album', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('album.show', ['slug' => $album->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('album/new.html.twig', [
@@ -83,7 +89,7 @@ class AlbumController extends AbstractController
 
             $albumRepository->add($album);
 
-            return $this->redirectToRoute('album', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('album.show', ['slug' => $album->getSlug()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('album/edit.html.twig', [
@@ -100,7 +106,7 @@ class AlbumController extends AbstractController
             $albumRepository->remove($album);
         }
 
-        return $this->redirectToRoute('album', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/ecouter/{id}', name: 'album.play', methods: ['GET'])]

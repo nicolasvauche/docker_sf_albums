@@ -10,7 +10,9 @@
     background-color: $color-primary;
 
     @include respond(md) {
-        position: static;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
     }
 
     a {
