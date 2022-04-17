@@ -108,17 +108,22 @@ class Category
         return $this;
     }
 
-    /**
-     * @return Collection<int, Artist>
-     */
     public function getArtists(): Collection
     {
         $this->artists = new ArrayCollection();
+
         foreach ($this->albums as $album) {
             if (!$this->artists->contains($album->getArtist())) {
                 $this->artists->add($album->getArtist());
             }
         }
+
+        $iterator = $this->artists->getIterator();
+        $iterator->uasort(function ($first, $second) {
+            return $first->getName() > $second->getName() ? 1 : -1;
+        });
+        $this->artists = new ArrayCollection(iterator_to_array($iterator));
+
         return $this->artists;
     }
 }

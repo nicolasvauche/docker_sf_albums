@@ -21,13 +21,15 @@
                         alt="{{ artist.name }}"
                 />
             </a>
-            <h3 class="grid-item-title">
+            <h3 class="grid-item-title mb-1">
                 <a href="{{ path('artist.show', {'slug': artist.slug}) }}">{{ artist.name }}</a>
             </h3>
-            <a href="{{ path('album', {'artistSlug': artist.slug}) }}" class="grid-item-text">
-                <i class="fas fa-record-vinyl"></i>
-                {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
-            </a>
+            <div class="grid-item-stats">
+                <a href="{{ path('artist.show', {'slug': artist.slug}) }}#albums" class="grid-item-text">
+                    <i class="fas fa-record-vinyl"></i>
+                    {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
+                </a>
+            </div>
         </article>
     {% endfor %}
 </div>

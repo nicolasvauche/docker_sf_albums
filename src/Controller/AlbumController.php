@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Album;
-use App\Entity\Artist;
 use App\Form\AlbumType;
 use App\Repository\AlbumRepository;
 use App\Repository\ArtistRepository;
@@ -20,7 +19,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/album')]
 class AlbumController extends AbstractController
 {
-    #[Route('/{categorySlug}', name: 'album', defaults: ['categorySlug' => null], methods: ['GET'])]
+    #[Route('/liste/{categorySlug}', name: 'album', defaults: ['categorySlug' => null], methods: ['GET'])]
     public function index(AlbumRepository $albumRepository, CategoryRepository $categoryRepository, $categorySlug): Response
     {
         if ($categorySlug) {
@@ -30,7 +29,7 @@ class AlbumController extends AbstractController
             }
         } else {
             $category = null;
-            $albums = $albumRepository->findBy([], ['title' => 'asc']);
+            $albums = $albumRepository->findBy([], ['year' => 'asc']);
         }
         return $this->render('album/index.html.twig', [
             'albums' => $albums,

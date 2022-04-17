@@ -27,7 +27,7 @@
             <h3>{{ artist.name }}</h3>
         </main>
 
-        <aside>
+        <aside id="albums">
             <h2>
                 <i class="fas fa-record-vinyl"></i>
                 {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}

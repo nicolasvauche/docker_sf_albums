@@ -17,13 +17,16 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/artiste')]
 class ArtistController extends AbstractController
 {
-    #[Route('/{categorySlug}', name: 'artist', defaults: ['categorySlug' => null], methods: ['GET'])]
+    #[Route('/liste/{categorySlug}', name: 'artist', defaults: ['categorySlug' => null], methods: ['GET'])]
     public function index(ArtistRepository $artistRepository, CategoryRepository $categoryRepository, $categorySlug): Response
     {
         if ($categorySlug) {
             $category = $categoryRepository->findOneBy(['slug' => $categorySlug]);
             if ($category) {
                 $artists = $category->getArtists();
+            } else {
+                $category = null;
+                $artists = $artistRepository->findBy([], ['name' => 'asc']);
             }
         } else {
             $category = null;

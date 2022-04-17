@@ -29,6 +29,15 @@
 
         <aside>
             <h2>
+                <i class="fas fa-users"></i>
+                {{ category.artists | length }} artiste{% if category.artists | length > 1 %}s{% endif %}
+            </h2>
+
+            {% include 'partials/_artists.html.twig' with {'artists': category.artists} %}
+        </aside>
+
+        <aside>
+            <h2>
                 <i class="fas fa-record-vinyl"></i>
                 {{ category.albums | length }} album{% if category.albums | length > 1 %}s{% endif %}
             </h2>

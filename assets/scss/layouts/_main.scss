@@ -58,8 +58,7 @@
             background-color: $color-white;
 
             @include respond(sm) {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
+                padding: 5rem 1.5rem;
             }
 
             h2 {
@@ -69,6 +68,37 @@
                 &:last-child {
                     margin-bottom: 0;
                 }
+            }
+
+            &:nth-child(even) {
+                background-color: $color-secondary;
+
+                @include respond(sm) {
+                    margin-left: -1.5rem;
+                    margin-right: -1.5rem;
+                }
+
+                .app-grid {
+                    .grid-item {
+                        color: $color-black;
+                        background-color: $color-white;
+
+                        .grid-item-title {
+                            color: $color-primary;
+                        }
+
+                        .grid-item-text {
+                            i {
+                                color: $color-primary;
+                            }
+                        }
+
+                        .grid-item-stats {
+                            background-color: $color-secondary;
+                        }
+                    }
+                }
+
             }
         }
 

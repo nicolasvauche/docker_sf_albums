@@ -1,0 +1,14 @@
+body.home {
+    .app-main {
+        section {
+            @include respond(md) {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 50vh;
+                padding-top: 3rem;
+                padding-bottom: 6rem;
+            }
+        }
+    }
+}

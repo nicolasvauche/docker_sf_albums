@@ -4,6 +4,19 @@
 {% block bodyclass %}home{% endblock %}
 
 {% block main %}
+    {% if suggestedAlbum %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fas fa-lightbulb"></i>
+                    pourquoi pas ?
+                </h2>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': suggestedAlbum, 'home': true} %}
+        </section>
+    {% endif %}
+
     {% if albumsLastListened %}
         <section class="lastlistened">
             <header>
@@ -29,6 +42,20 @@
             </header>
 
             {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsNeverListened %}
+        <section class="lastlistened">
+            <header>
+                <h2>
+                    <i class="fas fa-fast-forward"></i>
+                    hé ben ?
+                </h2>
+                <p>vous n'avez jamais écouté ces albums :(</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsNeverListened, 'home': true} %}
         </section>
     {% endif %}
 

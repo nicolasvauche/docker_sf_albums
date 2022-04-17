@@ -67,6 +67,15 @@ class AlbumRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findByNeverListened()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.lastListened IS NULL')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Album[] Returns an array of Album objects
     //  */
