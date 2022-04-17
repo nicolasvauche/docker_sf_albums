@@ -1,35 +1,74 @@
 <div class="app-grid">
-    {% for artist in artists %}
-        <article class="grid-item">
-            {% if home is not defined %}
-                <div class="grid-item-actions">
-                    <a href="{{ path('artist.edit', {'slug': artist.slug}) }}">
-                        <i class="fas fa-edit"></i>
+    {% if suggestedArtists is defined %}
+        {% for category in suggestedArtists %}
+            <article class="grid-item">
+                {% if home is not defined %}
+                    <div class="grid-item-actions">
+                        <a href="{{ path('artist.edit', {'slug': category.albums[0].artist.slug}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {{ include('artist/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+                <a href="{{ path('artist.show', {'slug': category.albums[0].artist.slug}) }}">
+                    <img src="
+                        {% if category.albums[0].artist.cover %}
+                            {{ asset('img/artists/' ~ category.albums[0].artist.cover) }}
+                        {% else %}
+                            {{ asset('img/artists/default.png') }}
+                        {% endif %}
+                    "
+                            class="grid-item-image"
+                            alt="{{ category.albums[0].artist.name }}"
+                    />
+                </a>
+                <h3 class="grid-item-title mb-1">
+                    <a href="{{ path('artist.show', {'slug': category.albums[0].artist.slug}) }}">{{ category.albums[0].artist.name }}</a>
+                </h3>
+                <h4 class="grid-item-subtitle">
+                    <a href="{{ path('category.show', {'slug': category.slug}) }}">{{ category.name }}</a>
+                </h4>
+                <div class="grid-item-stats">
+                    <a href="{{ path('artist.show', {'slug': category.albums[0].artist.slug}) }}#albums" class="grid-item-text">
+                        <i class="fas fa-record-vinyl"></i>
+                        {{ category.albums[0].artist.albums | length }} album{% if category.albums[0].artist.albums | length > 1 %}s{% endif %}
                     </a>
-                    {{ include('artist/_delete_form.html.twig') }}
                 </div>
-            {% endif %}
-            <a href="{{ path('artist.show', {'slug': artist.slug}) }}">
-                <img src="
+            </article>
+        {% endfor %}
+    {% elseif artists is defined %}
+        {% for artist in artists %}
+            <article class="grid-item">
+                {% if home is not defined %}
+                    <div class="grid-item-actions">
+                        <a href="{{ path('artist.edit', {'slug': artist.slug}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {{ include('artist/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+                <a href="{{ path('artist.show', {'slug': artist.slug}) }}">
+                    <img src="
                         {% if artist.cover %}
                             {{ asset('img/artists/' ~ artist.cover) }}
                         {% else %}
                             {{ asset('img/artists/default.png') }}
                         {% endif %}
                     "
-                        class="grid-item-image"
-                        alt="{{ artist.name }}"
-                />
-            </a>
-            <h3 class="grid-item-title mb-1">
-                <a href="{{ path('artist.show', {'slug': artist.slug}) }}">{{ artist.name }}</a>
-            </h3>
-            <div class="grid-item-stats">
-                <a href="{{ path('artist.show', {'slug': artist.slug}) }}#albums" class="grid-item-text">
-                    <i class="fas fa-record-vinyl"></i>
-                    {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
+                            class="grid-item-image"
+                            alt="{{ artist.name }}"
+                    />
                 </a>
-            </div>
-        </article>
-    {% endfor %}
+                <h3 class="grid-item-title mb-1">
+                    <a href="{{ path('artist.show', {'slug': artist.slug}) }}">{{ artist.name }}</a>
+                </h3>
+                <div class="grid-item-stats">
+                    <a href="{{ path('artist.show', {'slug': artist.slug}) }}#albums" class="grid-item-text">
+                        <i class="fas fa-record-vinyl"></i>
+                        {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
+                    </a>
+                </div>
+            </article>
+        {% endfor %}
+    {% endif %}
 </div>

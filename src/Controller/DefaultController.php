@@ -29,13 +29,26 @@ class DefaultController extends AbstractController
                 ->addAlbum($randomAlbum[0]);
             $suggestedCategories->add($suggestedCategory);
         }
+        $suggestedArtists = new ArrayCollection();
+        foreach ($categories as $category) {
+            $suggestedArtist = new Category();
+            $albums = $category->getAlbums()->toArray();
+            shuffle($albums);
+            $randomAlbum = array_slice($albums, 0, 1);
+            $suggestedArtist
+                ->setName($category->getName())
+                ->setSlug($category->getSlug())
+                ->addAlbum($randomAlbum[0]);
+            $suggestedArtists->add($suggestedArtist);
+        }
 
         $albumsNeverListened = $albumRepository->findByNeverListened();
         shuffle($albumsNeverListened);
-        $albumsNeverListened = array_slice($albumsNeverListened, 0, 8);
+        $albumsNeverListened = array_slice($albumsNeverListened, 0, 4);
 
         return $this->render('default/index.html.twig', [
             'suggestedCategories' => $suggestedCategories,
+            'suggestedArtists' => $suggestedArtists,
             'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
             'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
             'albumsPlayed' => $albumRepository->findByMostPlayed(),

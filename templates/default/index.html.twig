@@ -4,14 +4,28 @@
 {% block bodyclass %}home{% endblock %}
 
 {% block main %}
-    {% if suggestedCategories %}
+    {% if suggestedArtists %}
         <section class="suggest">
             <header>
                 <h2>
                     <i class="fas fa-lightbulb"></i>
                     pourquoi pas ?
                 </h2>
-                <p>Un album au pif dans chaque catégorie :</p>
+                <p>Un artiste au pif :</p>
+            </header>
+
+            {% include 'partials/_artists.html.twig' with {'suggestedArtists': suggestedArtists, 'home': true} %}
+        </section>
+    {% endif %}
+
+    {% if suggestedCategories %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fas fa-lightbulb"></i>
+                    ou bien…
+                </h2>
+                <p>Ou un album au pif :</p>
             </header>
 
             {% include 'partials/_albums.html.twig' with {'suggestedCategories': suggestedCategories, 'home': true} %}
@@ -39,7 +53,7 @@
                     <i class="fas fa-heart"></i>
                     souvent écoutés
                 </h2>
-                <p>vous écoutez souvent ça :</p>
+                <p>Vous écoutez souvent ça :</p>
             </header>
 
             {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true} %}
@@ -53,7 +67,7 @@
                     <i class="fas fa-skull-crossbones"></i>
                     hé ben ?
                 </h2>
-                <p>vous n'avez jamais écouté ces albums :(</p>
+                <p>Vous n'avez jamais écouté ces albums :(</p>
             </header>
 
             {% include 'partials/_albums.html.twig' with {'albums': albumsNeverListened, 'home': true} %}
