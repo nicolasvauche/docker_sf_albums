@@ -21,18 +21,18 @@
                         alt="{{ category.name }}"
                 />
             </a>
-            <h3 class="grid-item-title">
+            <h3 class="grid-item-title mb-1">
                 <a href="{{ path('category.show', {'slug': category.slug}) }}">{{ category.name }}</a>
             </h3>
-            <div class="infos">
-                <p class="grid-item-text">
+            <div class="grid-item-stats">
+                <a href="{{ path('artist', {'categorySlug': category.slug}) }}" class="grid-item-text">
                     <i class="fas fa-users"></i>
                     {{ category.artists | length }} artiste{% if category.artists | length > 1 %}s{% endif %}
-                </p>
-                <p class="grid-item-text">
+                </a>
+                <a href="{{ path('album', {'categorySlug': category.slug}) }}" class="grid-item-text">
                     <i class="fas fa-record-vinyl"></i>
                     {{ category.albums | length }} album{% if category.albums | length > 1 %}s{% endif %}
-                </p>
+                </a>
             </div>
         </article>
     {% endfor %}

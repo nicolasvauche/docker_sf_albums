@@ -8,7 +8,11 @@
         <header>
             <h2>
                 <i class="fas fa-record-vinyl"></i>
-                tous les albums ({{ albums | length}})
+                tous les albums
+                {% if category %}
+                    {{ category.name }}
+                {% endif %}
+                ({{ albums | length}})
             </h2>
         </header>
 

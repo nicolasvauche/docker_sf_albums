@@ -24,10 +24,10 @@
             <h3 class="grid-item-title">
                 <a href="{{ path('artist.show', {'slug': artist.slug}) }}">{{ artist.name }}</a>
             </h3>
-            <p class="grid-item-text">
+            <a href="{{ path('album', {'artistSlug': artist.slug}) }}" class="grid-item-text">
                 <i class="fas fa-record-vinyl"></i>
                 {{ artist.albums | length }} album{% if artist.albums | length > 1 %}s{% endif %}
-            </p>
+            </a>
         </article>
     {% endfor %}
 </div>

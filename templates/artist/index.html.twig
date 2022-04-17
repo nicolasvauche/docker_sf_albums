@@ -8,7 +8,11 @@
         <header>
             <h2>
                 <i class="fas fa-users-cog"></i>
-                tous les artistes ({{ artists | length}})
+                tous les artistes
+                {% if category %}
+                    {{ category.name }}
+                {% endif %}
+                ({{ artists | length }})
             </h2>
         </header>
 

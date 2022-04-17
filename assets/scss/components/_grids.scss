@@ -157,12 +157,16 @@
         .grid-item-stats {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             padding: 0.5rem 0.5rem 0.25rem;
             font-size: 0.75rem;
             background-color: $color-white;
             border-radius: 0.5rem;
             box-shadow: inset 2px 2px 2px rgba($color-black, 0.5);
+
+            p {
+                margin-bottom: 0 !important;
+            }
 
             i {
                 margin-right: 0.5rem;
@@ -195,13 +199,6 @@
                     }
                 }
             }
-        }
-
-        .infos {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin-top: 0.5rem;
         }
     }
 }

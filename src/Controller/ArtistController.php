@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Artist;
 use App\Form\ArtistType;
 use App\Repository\ArtistRepository;
+use App\Repository\CategoryRepository;
 use App\Service\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -16,11 +17,21 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('/artiste')]
 class ArtistController extends AbstractController
 {
-    #[Route('/', name: 'artist', methods: ['GET'])]
-    public function index(ArtistRepository $artistRepository): Response
+    #[Route('/{categorySlug}', name: 'artist', defaults: ['categorySlug' => null], methods: ['GET'])]
+    public function index(ArtistRepository $artistRepository, CategoryRepository $categoryRepository, $categorySlug): Response
     {
+        if ($categorySlug) {
+            $category = $categoryRepository->findOneBy(['slug' => $categorySlug]);
+            if ($category) {
+                $artists = $category->getArtists();
+            }
+        } else {
+            $category = null;
+            $artists = $artistRepository->findBy([], ['name' => 'asc']);
+        }
         return $this->render('artist/index.html.twig', [
-            'artists' => $artistRepository->findBy([], ['name' => 'asc']),
+            'artists' => $artists,
+            'category' => $category,
         ]);
     }
 
@@ -53,7 +64,7 @@ class ArtistController extends AbstractController
         ]);
     }
 
-    #[Route('/{slug}', name: 'artist.show', methods: ['GET'])]
+    #[Route('/details/{slug}', name: 'artist.show', methods: ['GET'])]
     public function show(Artist $artist): Response
     {
         return $this->render('artist/show.html.twig', [
