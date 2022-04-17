@@ -1,47 +1,48 @@
 <div class="app-grid">
-    {% for album in albums %}
-        <article class="grid-item">
-            {% if home is not defined %}
-                <div class="grid-item-actions">
-                    <a href="{{ path('album.edit', {'slug': album.slug}) }}">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    {{ include('album/_delete_form.html.twig') }}
-                </div>
-            {% endif %}
+    {% if albums is defined %}
+        {% for album in albums %}
+            <article class="grid-item">
+                {% if home is not defined %}
+                    <div class="grid-item-actions">
+                        <a href="{{ path('album.edit', {'slug': album.slug}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {{ include('album/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
 
-            <a href="{{ path('album.show', {'slug': album.slug}) }}">
-                <figure class="grid-item-image-container">
-                    <img src="
+                <a href="{{ path('album.show', {'slug': album.slug}) }}">
+                    <figure class="grid-item-image-container">
+                        <img src="
                         {% if album.cover %}
                             {{ asset('img/albums/' ~ album.cover) }}
                         {% else %}
                             {{ asset('img/albums/default.png') }}
                         {% endif %}
                     "
-                            class="grid-item-image"
-                            alt="{{ album.title }}"
-                    />
-                </figure>
-            </a>
+                                class="grid-item-image"
+                                alt="{{ album.title }}"
+                        />
+                    </figure>
+                </a>
 
-            <h3 class="grid-item-title">
-                <a href="{{ path('album.show', {'slug': album.slug}) }}">{{ album.title }}</a>
-            </h3>
-            {% if home is not defined %}
+                <h3 class="grid-item-title">
+                    <a href="{{ path('album.show', {'slug': album.slug}) }}">{{ album.title }}</a>
+                </h3>
+                {% if home is not defined %}
+                    <h4 class="grid-item-subtitle">
+                        {{ album.year }}
+                    </h4>
+                {% endif %}
                 <h4 class="grid-item-subtitle">
-                    {{ album.year }}
+                    <a href="{{ path('artist.show', {'slug': album.artist.slug}) }}">{{ album.artist.name }}</a>
                 </h4>
-            {% endif %}
-            <h4 class="grid-item-subtitle">
-                <a href="{{ path('artist.show', {'slug': album.artist.slug}) }}">{{ album.artist.name }}</a>
-            </h4>
 
-            <p class="grid-item-stats">
-                <i class="fas fa-headphones"></i>
-                <span class="nbplays">{{ album.nbPlays }}</span>
+                <p class="grid-item-stats">
+                    <i class="fas fa-headphones"></i>
+                    <span class="nbplays">{{ album.nbPlays }}</span>
 
-                <span class="lastlistened">
+                    <span class="lastlistened">
                     {% if album.lastListened %}
                         &nbsp;~&nbsp;{{ album.lastListened | date }}
                     {% else %}
@@ -49,10 +50,71 @@
                     {% endif %}
                 </span>
 
-                <a href="#" class="btn-play" data-album="{{ album.id }}">
-                    <i class="fas fa-play"></i>
+                    <a href="#" class="btn-play" data-album="{{ album.id }}">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </p>
+            </article>
+        {% endfor %}
+    {% elseif suggestedCategories is defined %}
+        {% for category in suggestedCategories %}
+            <article class="grid-item">
+                {% if home is not defined %}
+                    <div class="grid-item-actions">
+                        <a href="{{ path('album.edit', {'slug': category.albums[0].slug}) }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {{ include('album/_delete_form.html.twig') }}
+                    </div>
+                {% endif %}
+
+                <a href="{{ path('album.show', {'slug': category.albums[0].slug}) }}">
+                    <figure class="grid-item-image-container">
+                        <img src="
+                        {% if category.albums[0].cover %}
+                            {{ asset('img/albums/' ~ category.albums[0].cover) }}
+                        {% else %}
+                            {{ asset('img/albums/default.png') }}
+                        {% endif %}
+                    "
+                                class="grid-item-image"
+                                alt="{{ category.albums[0].title }}"
+                        />
+                    </figure>
                 </a>
-            </p>
-        </article>
-    {% endfor %}
+
+                <h3 class="grid-item-title">
+                    <a href="{{ path('album.show', {'slug': category.albums[0].slug}) }}">{{ category.albums[0].title }}</a>
+                </h3>
+                {% if home is not defined %}
+                    <h4 class="grid-item-subtitle">
+                        {{ category.albums[0].year }}
+                    </h4>
+                {% endif %}
+                <h4 class="grid-item-subtitle">
+                    <a href="{{ path('artist.show', {'slug': category.albums[0].artist.slug}) }}">{{ category.albums[0].artist.name }}</a>
+                </h4>
+                <h4 class="grid-item-subtitle">
+                    <a href="{{ path('category.show', {'slug': category.slug}) }}">{{ category.name }}</a>
+                </h4>
+
+                <p class="grid-item-stats">
+                    <i class="fas fa-headphones"></i>
+                    <span class="nbplays">{{ category.albums[0].nbPlays }}</span>
+
+                    <span class="lastlistened">
+                        {% if category.albums[0].lastListened %}
+                            &nbsp;~&nbsp;{{ category.albums[0].lastListened | date }}
+                        {% else %}
+                            &nbsp;
+                        {% endif %}
+                    </span>
+
+                    <a href="#" class="btn-play" data-album="{{ category.albums[0].id }}">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </p>
+            </article>
+        {% endfor %}
+    {% endif %}
 </div>
