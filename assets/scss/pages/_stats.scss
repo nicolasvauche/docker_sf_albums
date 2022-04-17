@@ -1,0 +1,26 @@
+body.stats {
+    .app-main {
+        section {
+            padding-top: 3rem;
+            padding-bottom: 6rem;
+
+            .app-grid {
+                display: block;
+                overflow-x: initial;
+
+                @include respond(sm) {
+                    display: grid;
+                }
+
+                .grid-item {
+                    background-color: $color-white;
+
+                    & > i {
+                        margin-bottom: 0.5rem;
+                        color: $color-primary;
+                    }
+                }
+            }
+        }
+    }
+}

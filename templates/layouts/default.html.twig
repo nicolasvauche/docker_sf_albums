@@ -25,6 +25,11 @@
             <i class="fas fa-record-vinyl"></i>
             Albums
         </a>
+
+        <a href="{{ path('stats') }}" title="Les Stats" {% if 'stats' in app.request.get('_route') %}class="active"{% endif %}>
+            <i class="fas fa-signal"></i>
+            Stats
+        </a>
     </nav>
 
     <main class="app-main">

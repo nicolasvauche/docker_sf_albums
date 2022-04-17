@@ -45,23 +45,23 @@ class AlbumRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByMostPlayed()
+    public function findByMostPlayed(?int $limit = null)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.nbPlays > 1')
             ->orderBy('a.nbPlays', 'DESC')
-            ->setMaxResults(4)
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
             ;
     }
 
-    public function findByLastListened()
+    public function findByLastListened(?int $limit = null)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.lastListened IS NOT NULL')
             ->orderBy('a.lastListened', 'DESC')
-            ->setMaxResults(4)
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
             ;

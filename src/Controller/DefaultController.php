@@ -51,8 +51,8 @@ class DefaultController extends AbstractController
             'suggestedArtists' => $suggestedArtists,
             'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
             'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
-            'albumsPlayed' => $albumRepository->findByMostPlayed(),
-            'albumsLastListened' => $albumRepository->findByLastListened(),
+            'albumsPlayed' => $albumRepository->findByMostPlayed(4),
+            'albumsLastListened' => $albumRepository->findByLastListened(4),
             'albumsNeverListened' => $albumsNeverListened,
         ]);
     }
