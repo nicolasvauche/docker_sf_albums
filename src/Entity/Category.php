@@ -30,6 +30,8 @@ class Category
     #[ORM\OrderBy(['year' => 'asc'])]
     private $albums;
 
+    private $artists;
+
     public function __construct()
     {
         $this->albums = new ArrayCollection();
@@ -104,5 +106,19 @@ class Category
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Artist>
+     */
+    public function getArtists(): Collection
+    {
+        $this->artists = new ArrayCollection();
+        foreach ($this->albums as $album) {
+            if (!$this->artists->contains($album->getArtist())) {
+                $this->artists->add($album->getArtist());
+            }
+        }
+        return $this->artists;
     }
 }
