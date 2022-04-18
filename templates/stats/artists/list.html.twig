@@ -1,0 +1,38 @@
+{% extends 'layouts/default.html.twig' %}
+
+{% block title %}les statistiques{% endblock %}
+{% block bodyclass %}stats{% endblock %}
+
+{% block main %}
+    <section id="list">
+        <header>
+            <h2>Liste des artistes</h2>
+
+            <div class="actions">
+                <a href="{{ path('stats') }}">
+                    <i class="fas fa-arrow-circle-left"></i>
+                    retour
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Artiste</th>
+                        <th>Albums</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artist in artists %}
+                        <tr>
+                            <td>{{ artist.name }}</td>
+                            <td>{{ artist.albums | length }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </section>
+{% endblock %}

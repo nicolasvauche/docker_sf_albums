@@ -155,4 +155,12 @@ class AlbumController extends AbstractController
             'albums' => $albumRepository->findByNeverListened(),
         ]);
     }
+
+    #[Route('/stats/liste', name: 'album.list')]
+    public function list(AlbumRepository $albumRepository): Response
+    {
+        return $this->render('stats/albums/list.html.twig', [
+            'albums' => $albumRepository->findBy([], ['artist' => 'ASC', 'year' => 'ASC']),
+        ]);
+    }
 }

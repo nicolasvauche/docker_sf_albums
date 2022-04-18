@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\AlbumRepository;
 use App\Repository\ArtistRepository;
 use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

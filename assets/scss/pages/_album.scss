@@ -40,4 +40,37 @@ body.album {
             }
         }
     }
+
+    &.show {
+        .app-main {
+            section {
+                .grid-item-image-container {
+                    height: 350px;
+
+                    @include respond(sm) {
+                        height: 600px;
+                    }
+
+                    @include respond(md) {
+                        height: 500px;
+                    }
+
+                    & > .grid-item-image {
+                        width: 7.5rem;
+                        height: 7.5rem;
+
+                        @include respond(sm) {
+                            width: 15rem;
+                            height: 15rem;
+                        }
+
+                        @include respond(md) {
+                            width: 12rem;
+                            height: 12rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

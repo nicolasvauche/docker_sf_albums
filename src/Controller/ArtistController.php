@@ -114,4 +114,12 @@ class ArtistController extends AbstractController
 
         return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/stats/liste', name: 'artist.list')]
+    public function list(ArtistRepository $artistRepository): Response
+    {
+        return $this->render('stats/artists/list.html.twig', [
+            'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
+        ]);
+    }
 }
