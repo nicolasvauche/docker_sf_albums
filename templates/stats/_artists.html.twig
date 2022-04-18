@@ -10,10 +10,14 @@
         <div class="grid-item">
             <i class="fas fa-users fa-4x"></i>
             <h3 class="grid-item-title">
-                {{ artists | length }} artiste{% if artists | length > 1 %}s{% endif %}
+                <a href="{{ path('artist') }}">
+                    {{ artists | length }} artiste{% if artists | length > 1 %}s{% endif %}
+                </a>
             </h3>
             <h4 class="grid-item-subtitle">
-                dans {{ categories | length }} catégorie{% if categories | length >1 %}s{% endif %}
+                <a href="{{ path('category') }}">
+                    dans {{ categories | length }} catégorie{% if categories | length >1 %}s{% endif %}
+                </a>
             </h4>
         </div>
         <div class="grid-item">

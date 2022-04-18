@@ -10,6 +10,19 @@
                 <i class="fas fa-list-alt"></i>
                 détails d'une catégorie
             </h2>
+
+            <div class="actions">
+                <a href="{{ path('category') }}">
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    retour à la liste
+                </a>
+
+                <a href="{{ path('category.edit', {'slug': category.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                {{ include('category/_delete_form.html.twig') }}
+            </div>
         </header>
 
         <main>
@@ -44,18 +57,5 @@
 
             {% include 'partials/_albums.html.twig' with {'albums': category.albums} %}
         </aside>
-
-        <div class="actions">
-            <a href="{{ path('category') }}">
-                <i class="fas fa-arrow-alt-circle-left"></i>
-                retour à la liste
-            </a>
-
-            <a href="{{ path('category.edit', {'slug': category.slug}) }}">
-                <i class="fas fa-edit"></i>
-            </a>
-
-            {{ include('category/_delete_form.html.twig') }}
-        </div>
     </section>
 {% endblock %}

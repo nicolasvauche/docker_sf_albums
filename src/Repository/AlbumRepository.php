@@ -71,6 +71,7 @@ class AlbumRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.lastListened IS NULL')
+            ->orderBy('a.artist', 'ASC')
             ->getQuery()
             ->getResult()
             ;

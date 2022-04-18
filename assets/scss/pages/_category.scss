@@ -5,6 +5,10 @@ body.category {
             flex-direction: column;
             justify-content: space-between;
             min-height: calc(100vh - 10rem);
+
+            @include respond(md) {
+                display: block;
+            }
         }
     }
 }

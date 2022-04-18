@@ -15,15 +15,15 @@
                 {% endif %}
                 ({{ artists | length }})
             </h2>
+
+            <div class="actions">
+                <a href="{{ path('artist.new') }}">
+                    <i class="fas fa-plus-circle"></i>
+                    nouvel artiste
+                </a>
+            </div>
         </header>
 
         {% include 'partials/_artists.html.twig' with {'artists': artists} %}
-
-        <div class="actions">
-            <a href="{{ path('artist.new') }}">
-                <i class="fas fa-plus-circle"></i>
-                nouvel artiste
-            </a>
-        </div>
     </section>
 {% endblock %}

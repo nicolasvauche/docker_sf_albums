@@ -21,6 +21,15 @@ class DefaultController extends AbstractController
         foreach ($categories as $category) {
             $suggestedCategory = new Category();
             $albums = $category->getAlbums()->toArray();
+            foreach ($albums as $key => $album) {
+                if ($album->getLastListened()) {
+                    $lastDate = new \DateTime($album->getLastListened()->format('Y-m-d'));
+                    $today = new \DateTime('now');
+                    if ($lastDate->diff($today)->format('%a') < 2) {
+                        unset($albums[$key]);
+                    }
+                }
+            }
             shuffle($albums);
             $randomAlbum = array_slice($albums, 0, 1);
             $suggestedCategory
@@ -49,7 +58,7 @@ class DefaultController extends AbstractController
         return $this->render('default/index.html.twig', [
             'suggestedCategories' => $suggestedCategories,
             'suggestedArtists' => $suggestedArtists,
-            'categories' => $categoryRepository->findBy([], ['name' => 'ASC']),
+            'categories' => $categoryRepository->findBy([], ['id' => 'ASC']),
             'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
             'albumsPlayed' => $albumRepository->findByMostPlayed(4),
             'albumsLastListened' => $albumRepository->findByLastListened(4),

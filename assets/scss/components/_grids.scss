@@ -17,9 +17,9 @@
         grid-gap: 2rem;
     }
 
-    @include respond(lg) {
+    /*@include respond(lg) {
         grid-template-columns: repeat(6, 1fr);
-    }
+    }*/
 
     &::-webkit-scrollbar {
         display: none;
@@ -72,7 +72,7 @@
             }
         }
 
-        @include respond(lg) {
+        /*@include respond(lg) {
             &:nth-child(3n+1),
             &:nth-child(3n+3),
             &:nth-child(4n+1),
@@ -89,7 +89,7 @@
                 border-top-right-radius: 0.5rem;
                 border-bottom-right-radius: 0.5rem;
             }
-        }
+        }*/
 
         &:hover {
             box-shadow: 0.5rem 0.5rem 0.5rem rgba($color-black, 0.5);
@@ -110,6 +110,10 @@
             height: 250px;
             object-fit: contain;
             box-sizing: border-box;
+
+            @include respond(lg) {
+                height: 400px;
+            }
         }
 
         .grid-item-image-container {
@@ -118,17 +122,26 @@
             justify-content: center;
             margin-bottom: 0.5rem;
             padding: 0.5rem;
-            height: 175px;
+            height: 250px;
             background: url('../img/albums/default.png') no-repeat center center;
             background-size: contain;
+
+            @include respond(lg) {
+                height: 400px;
+            }
 
             & > .grid-item-image {
                 margin-bottom: 0;
                 padding: 0;
-                width: 5rem;
-                height: 5rem;
+                width: 5.5rem;
+                height: 5.5rem;
                 object-fit: cover;
                 border-radius: 50%;
+
+                @include respond(lg) {
+                    width: 8rem;
+                    height: 8rem;
+                }
             }
         }
 

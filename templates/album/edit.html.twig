@@ -10,17 +10,17 @@
                 <i class="fas fa-record-vinyl"></i>
                 modifier un album
             </h2>
+
+            <div class="actions">
+                <a href="{{ path('album') }}">
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    retour à la liste
+                </a>
+
+                {{ include('album/_delete_form.html.twig') }}
+            </div>
         </header>
 
         {{ include('album/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <div class="actions">
-            <a href="{{ path('album') }}">
-                <i class="fas fa-arrow-alt-circle-left"></i>
-                retour à la liste
-            </a>
-
-            {{ include('album/_delete_form.html.twig') }}
-        </div>
     </section>
 {% endblock %}

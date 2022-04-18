@@ -6,11 +6,6 @@ body.album {
             justify-content: space-between;
             min-height: calc(100vh - 10rem);
 
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-
             .grid-item-image-container {
                 display: flex;
                 align-items: center;

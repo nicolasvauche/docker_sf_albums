@@ -10,17 +10,17 @@
                 <i class="fas fa-list-alt"></i>
                 modifier un artiste
             </h2>
+
+            <div class="actions">
+                <a href="{{ path('artist') }}">
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    retour à la liste
+                </a>
+
+                {{ include('artist/_delete_form.html.twig') }}
+            </div>
         </header>
 
         {{ include('artist/_form.html.twig', {'button_label': 'Modifier'}) }}
-
-        <div class="actions">
-            <a href="{{ path('artist') }}">
-                <i class="fas fa-arrow-alt-circle-left"></i>
-                retour à la liste
-            </a>
-
-            {{ include('artist/_delete_form.html.twig') }}
-        </div>
     </section>
 {% endblock %}

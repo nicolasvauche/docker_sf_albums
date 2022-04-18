@@ -13,8 +13,21 @@
             padding: 1.5rem;
         }
 
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
         header {
             padding: 0 1.5em;
+
+            @include respond(sm) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+                text-align: left;
+            }
         }
 
         main {
@@ -67,6 +80,10 @@
 
                 &:last-child {
                     margin-bottom: 0;
+                }
+
+                @include respond(sm) {
+                    margin-bottom: 1.5rem;
                 }
             }
 
@@ -128,11 +145,16 @@
 
         }
 
-        & > .actions {
+        .actions {
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            padding: 1rem 0 0;
+            justify-content: space-between;
+            grid-gap: 1.5rem;
+            margin-top: 1rem;
+
+            @include respond(sm) {
+                margin-top: 0;
+            }
 
             a,
             button {

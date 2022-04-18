@@ -10,6 +10,19 @@
                 <i class="fas fa-record-vinyl"></i>
                 détails de l'album
             </h2>
+
+            <div class="actions">
+                <a href="{{ path('album') }}">
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    retour à la liste
+                </a>
+
+                <a href="{{ path('album.edit', {'slug': album.slug}) }}">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                {{ include('album/_delete_form.html.twig') }}
+            </div>
         </header>
 
         <main>
@@ -54,18 +67,5 @@
                 </a>
             </h2>
         </aside>
-
-        <div class="actions">
-            <a href="{{ path('album') }}">
-                <i class="fas fa-arrow-alt-circle-left"></i>
-                retour à la liste
-            </a>
-
-            <a href="{{ path('album.edit', {'slug': album.slug}) }}">
-                <i class="fas fa-edit"></i>
-            </a>
-
-            {{ include('album/_delete_form.html.twig') }}
-        </div>
     </section>
 {% endblock %}
