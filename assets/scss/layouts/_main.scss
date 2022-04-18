@@ -28,6 +28,12 @@
                 margin-bottom: 2rem;
                 text-align: left;
             }
+
+            p {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
         }
 
         main {
