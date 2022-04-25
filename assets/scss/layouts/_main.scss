@@ -131,7 +131,7 @@
             .app-grid {
                 .grid-item {
                     color: $color-black;
-                    background-color: $color-white;
+                    /*background-color: $color-white;*/
 
                     .grid-item-title {
                         color: $color-primary;
@@ -144,7 +144,8 @@
                     }
 
                     .grid-item-stats {
-                        background-color: $color-secondary;
+                        /*background-color: $color-secondary;*/
+                        background-color: $color-white;
                     }
                 }
             }

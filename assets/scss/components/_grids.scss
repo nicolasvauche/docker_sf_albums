@@ -33,8 +33,9 @@
         scroll-snap-align: center;
         text-align: center;
         color: $color-black;
-        background-color: $color-secondary;
-        box-shadow: 0.25rem 0.25rem 0.5rem rgba($color-black, 0.5);
+        /*background-color: $color-secondary;*/
+        background-color: transparent;
+        /*box-shadow: 0.25rem 0.25rem 0.5rem rgba($color-black, 0.5);*/
         opacity: 0.9;
         transition: all 0.3s;
         border-radius: 2px;
@@ -111,9 +112,9 @@
             object-fit: contain;
             box-sizing: border-box;
 
-            @include respond(lg) {
+            /*@include respond(lg) {
                 height: 400px;
-            }
+            }*/
         }
 
         .grid-item-image-container {
@@ -126,9 +127,9 @@
             background: url('../img/albums/default.png') no-repeat center center;
             background-size: contain;
 
-            @include respond(lg) {
+            /*@include respond(lg) {
                 height: 400px;
-            }
+            }*/
 
             & > .grid-item-image {
                 margin-bottom: 0;
@@ -174,7 +175,8 @@
             margin-bottom: 0;
             padding: 0.5rem 0.5rem 0.25rem;
             font-size: 0.75rem;
-            background-color: $color-white;
+            /*background-color: $color-white;*/
+            background-color: $color-secondary;
             border-radius: 0.5rem;
             box-shadow: inset 2px 2px 2px rgba($color-black, 0.5);
 

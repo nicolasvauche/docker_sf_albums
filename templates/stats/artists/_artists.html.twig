@@ -32,10 +32,11 @@
             <h3 class="grid-item-title">
                 {% set artistsLastListened = [] %}
                 {% for album in albumsLastListened %}
-                    {% if album.artist not in artistsLastListened %}
-                        {% set artistsLastListened = artistsLastListened | merge([album.artist]) %}
+                    {% if album.artist.id not in artistsLastListened %}
+                        {% set artistsLastListened = artistsLastListened | merge([album.artist.id]) %}
                     {% endif %}
                 {% endfor %}
+                {{ dump(artistsLastListened) }}
                 {{ artistsLastListened | length }} artiste{% if artistsLastListened | length > 1 %}s{% endif %} écouté{% if artistsLastListened | length > 1 %}s{% endif %}
             </h3>
             <h4 class="grid-item-subtitle">
@@ -63,13 +64,16 @@
             <i class="fas fa-heart-broken fa-4x"></i>
             <h3 class="grid-item-title">
                 {% set artistsNeverListened = [] %}
+                {% set i = 0 %}
                 {% for album in albumsNeverListened %}
                     {% if album.artist.id not in artistsNeverListened %}
                         {% set artistsNeverListened = artistsNeverListened | merge([album.artist.id]) %}
                     {% else %}
-                        {% set artistsNeverListened = artistsNeverListened | filter((k, v) => v != album.artist.id) %}
+                        {% set artistsNeverListened = artistsNeverListened | filter((v,k) => k == i) %}
                     {% endif %}
+                    {% set i = i + 1 %}
                 {% endfor %}
+                {{ dump(artistsNeverListened) }}
                 {{ artistsNeverListened | length }} artiste{% if artistsNeverListened | length > 1 %}s{% endif %} jamais écouté{% if artistsNeverListened | length > 1 %}s{% endif %}
             </h3>
             <h4 class="grid-item-subtitle">
