@@ -25,7 +25,7 @@ class DefaultController extends AbstractController
                 if ($album->getLastListened()) {
                     $lastDate = new \DateTime($album->getLastListened()->format('Y-m-d'));
                     $today = new \DateTime('now');
-                    if ($lastDate->diff($today)->format('%a') < 2) {
+                    if ($lastDate->diff($today)->format('%a') < 30) {
                         unset($albums[$key]);
                     }
                 }
@@ -38,6 +38,7 @@ class DefaultController extends AbstractController
                 ->addAlbum($randomAlbum[0]);
             $suggestedCategories->add($suggestedCategory);
         }
+
         $suggestedArtists = new ArrayCollection();
         foreach ($categories as $category) {
             $suggestedArtist = new Category();
@@ -51,6 +52,10 @@ class DefaultController extends AbstractController
             $suggestedArtists->add($suggestedArtist);
         }
 
+        $albumsPlayed = $albumRepository->findByMostPlayed();
+        shuffle($albumsPlayed);
+        $albumsPlayed = array_slice($albumsPlayed, 0, 4);
+
         $albumsNeverListened = $albumRepository->findByNeverListened();
         shuffle($albumsNeverListened);
         $albumsNeverListened = array_slice($albumsNeverListened, 0, 4);
@@ -60,7 +65,7 @@ class DefaultController extends AbstractController
             'suggestedArtists' => $suggestedArtists,
             'categories' => $categoryRepository->findBy([], ['id' => 'ASC']),
             'artists' => $artistRepository->findBy([], ['name' => 'ASC']),
-            'albumsPlayed' => $albumRepository->findByMostPlayed(4),
+            'albumsPlayed' => $albumsPlayed,
             'albumsLastListened' => $albumRepository->findByLastListened(4),
             'albumsNeverListened' => $albumsNeverListened,
         ]);

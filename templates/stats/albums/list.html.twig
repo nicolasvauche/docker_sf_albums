@@ -22,6 +22,7 @@
                     <tr>
                         <th>Artiste</th>
                         <th>Titre</th>
+                        <th>Catégorie</th>
                         <th>Année</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                         <tr>
                             <td>{{ album.artist.name }}</td>
                             <td>{{ album.title }}</td>
+                            <td>{{ album.category.name }}</td>
                             <td>{{ album.year }}</td>
                         </tr>
                     {% endfor %}

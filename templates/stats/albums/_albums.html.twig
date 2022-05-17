@@ -15,12 +15,13 @@
 
     <div class="app-grid">
         <div class="grid-item">
-            <i class="fas fa-record-vinyl fa-4x"></i>
-            <h3 class="grid-item-title">
-                <a href="{{ path('album') }}">
+            <a href="{{ path('album') }}">
+                <i class="fas fa-record-vinyl fa-4x"></i>
+                <h3 class="grid-item-title">
+
                     {{ albums | length }} album{% if albums | length > 1 %}s{% endif %}
-                </a>
-            </h3>
+                </h3>
+            </a>
             <h4 class="grid-item-subtitle">
                 <a href="{{ path('category') }}">
                     dans {{ categories | length }} catégorie{% if categories | length >1 %}s{% endif %}
@@ -28,34 +29,34 @@
             </h4>
         </div>
         <div class="grid-item">
-            <i class="fas fa-headphones fa-4x"></i>
-            <h3 class="grid-item-title">
-                <a href="{{ path('album.played') }}">
+            <a href="{{ path('album.played') }}">
+                <i class="fas fa-headphones fa-4x"></i>
+                <h3 class="grid-item-title">
                     {{ albumsLastListened | length }} album{% if albumsLastListened | length > 1 %}s{% endif %} écouté{% if albumsLastListened | length > 1 %}s{% endif %}
-                </a>
-            </h3>
+                </h3>
+            </a>
             <h4 class="grid-item-subtitle">
                 depuis cette app
             </h4>
         </div>
         <div class="grid-item">
-            <i class="fas fa-heart fa-4x"></i>
-            <h3 class="grid-item-title">
-                <a href="{{ path('album.mostplayed') }}">
+            <a href="{{ path('album.mostplayed') }}">
+                <i class="fas fa-heart fa-4x"></i>
+                <h3 class="grid-item-title">
                     {{ albumsPlayed | length }} album{% if albumsPlayed | length > 1 %}s{% endif %} écouté{% if albumsPlayed | length > 1 %}s{% endif %}
-                </a>
-            </h3>
+                </h3>
+            </a>
             <h4 class="grid-item-subtitle">
                 plus d'une fois
             </h4>
         </div>
         <div class="grid-item">
-            <i class="fas fa-heart-broken fa-4x"></i>
-            <h3 class="grid-item-title">
-                <a href="{{ path('album.notplayed') }}">
+            <a href="{{ path('album.notplayed') }}">
+                <i class="fas fa-heart-broken fa-4x"></i>
+                <h3 class="grid-item-title">
                     {{ albumsNeverListened | length }} album{% if albumsNeverListened | length > 1 %}s{% endif %} jamais écouté{% if albumsNeverListened | length > 1 %}s{% endif %}
-                </a>
-            </h3>
+                </h3>
+            </a>
             <h4 class="grid-item-subtitle">
                 même pas une fois ;(
             </h4>

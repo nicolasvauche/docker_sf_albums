@@ -25,10 +25,24 @@
                     <i class="fas fa-lightbulb"></i>
                     ou bien…
                 </h2>
-                <p>Un album au hasard, que nous n'avez pas écouté depuis avant-hier au moins :</p>
+                <p>Un album au hasard, que nous n'avez pas écouté depuis au moins un mois :</p>
             </header>
 
             {% include 'partials/_albums.html.twig' with {'suggestedCategories': suggestedCategories, 'home': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsNeverListened %}
+        <section class="lastlistened">
+            <header>
+                <h2>
+                    <i class="fas fa-heart-broken"></i>
+                    hé ben ?
+                </h2>
+                <p>Vous n'avez jamais écouté ces albums :(</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsNeverListened, 'home': true} %}
         </section>
     {% endif %}
 
@@ -57,20 +71,6 @@
             </header>
 
             {% include 'partials/_albums.html.twig' with {'albums': albumsPlayed, 'home': true} %}
-        </section>
-    {% endif %}
-
-    {% if albumsNeverListened %}
-        <section class="lastlistened">
-            <header>
-                <h2>
-                    <i class="fas fa-heart-broken"></i>
-                    hé ben ?
-                </h2>
-                <p>Vous n'avez jamais écouté ces albums :(</p>
-            </header>
-
-            {% include 'partials/_albums.html.twig' with {'albums': albumsNeverListened, 'home': true} %}
         </section>
     {% endif %}
 

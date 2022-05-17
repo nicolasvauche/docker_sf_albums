@@ -131,36 +131,4 @@ class AlbumController extends AbstractController
             return new JsonResponse(['message' => 'Accès non autorisé'], 405);
         }
     }
-
-    #[Route('/stats/ecoutes', name: 'album.played', methods: ['GET'])]
-    public function played(AlbumRepository $albumRepository): Response
-    {
-        return $this->render('stats/albums/played.html.twig', [
-            'albums' => $albumRepository->findByLastListened(),
-        ]);
-    }
-
-    #[Route('/stats/plus-ecoutes', name: 'album.mostplayed', methods: ['GET'])]
-    public function mostplayed(AlbumRepository $albumRepository): Response
-    {
-        return $this->render('stats/albums/mostplayed.html.twig', [
-            'albums' => $albumRepository->findByMostPlayed(),
-        ]);
-    }
-
-    #[Route('/stats/non-ecoutes', name: 'album.notplayed', methods: ['GET'])]
-    public function notplayed(AlbumRepository $albumRepository): Response
-    {
-        return $this->render('stats/albums/notplayed.html.twig', [
-            'albums' => $albumRepository->findByNeverListened(),
-        ]);
-    }
-
-    #[Route('/stats/liste', name: 'album.list')]
-    public function list(AlbumRepository $albumRepository): Response
-    {
-        return $this->render('stats/albums/list.html.twig', [
-            'albums' => $albumRepository->findBy([], ['artist' => 'ASC', 'year' => 'ASC']),
-        ]);
-    }
 }

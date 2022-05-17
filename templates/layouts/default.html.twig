@@ -7,13 +7,13 @@
 
     <nav class="app-navigation">
         <a href="{{ path('home') }}" title="Retour à l'accueil" {% if app.request.get('_route') == 'home' %}class="active"{% endif %}>
-            <i class="fas fa-home"></i>
-            Accueil
+            <i class="fas fa-play-circle"></i>
+            Spin
         </a>
 
-        <a href="{{ path('category') }}" title="Toutes les catégories" {% if 'category' in app.request.get('_route') %}class="active"{% endif %}>
-            <i class="fas fa-list-alt"></i>
-            Catégories
+        <a href="{{ path('album') }}" title="Tous les artistes" {% if 'album' in app.request.get('_route') %}class="active"{% endif %}>
+            <i class="fas fa-record-vinyl"></i>
+            Albums
         </a>
 
         <a href="{{ path('artist') }}" title="Tous les artistes" {% if 'artist' in app.request.get('_route') %}class="active"{% endif %}>
@@ -21,9 +21,9 @@
             Artistes
         </a>
 
-        <a href="{{ path('album') }}" title="Tous les artistes" {% if 'album' in app.request.get('_route') %}class="active"{% endif %}>
-            <i class="fas fa-record-vinyl"></i>
-            Albums
+        <a href="{{ path('category') }}" title="Toutes les catégories" {% if 'category' in app.request.get('_route') %}class="active"{% endif %}>
+            <i class="fas fa-list-alt"></i>
+            Catégories
         </a>
 
         <a href="{{ path('stats') }}" title="Les Stats" {% if 'stats' in app.request.get('_route') %}class="active"{% endif %}>
