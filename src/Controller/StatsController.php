@@ -26,7 +26,7 @@ class StatsController extends AbstractController
         ]);
     }
 
-    #[Route('/ecoutes', name: 'album.played', methods: ['GET'])]
+    #[Route('/ecoutes', name: 'stats.played', methods: ['GET'])]
     public function played(AlbumRepository $albumRepository): Response
     {
         return $this->render('stats/albums/played.html.twig', [
@@ -34,7 +34,7 @@ class StatsController extends AbstractController
         ]);
     }
 
-    #[Route('/plus-ecoutes', name: 'album.mostplayed', methods: ['GET'])]
+    #[Route('/plus-ecoutes', name: 'stats.mostplayed', methods: ['GET'])]
     public function mostplayed(AlbumRepository $albumRepository): Response
     {
         return $this->render('stats/albums/mostplayed.html.twig', [
@@ -42,7 +42,7 @@ class StatsController extends AbstractController
         ]);
     }
 
-    #[Route('/non-ecoutes', name: 'album.notplayed', methods: ['GET'])]
+    #[Route('/non-ecoutes', name: 'stats.notplayed', methods: ['GET'])]
     public function notplayed(AlbumRepository $albumRepository): Response
     {
         return $this->render('stats/albums/notplayed.html.twig', [
@@ -50,7 +50,7 @@ class StatsController extends AbstractController
         ]);
     }
 
-    #[Route('/liste', name: 'album.list')]
+    #[Route('/liste', name: 'stats.list')]
     public function list(AlbumRepository $albumRepository): Response
     {
         $albums = $albumRepository->findAll();

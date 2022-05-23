@@ -53,8 +53,8 @@ class DefaultController extends AbstractController
         }
 
         $albumsPlayed = $albumRepository->findByMostPlayed();
-        shuffle($albumsPlayed);
-        $albumsPlayed = array_slice($albumsPlayed, 0, 4);
+        $albumsPlayed = array_slice($albumsPlayed, 0, 8);
+        // shuffle($albumsPlayed);
 
         $albumsNeverListened = $albumRepository->findByNeverListened();
         shuffle($albumsNeverListened);

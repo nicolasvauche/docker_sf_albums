@@ -50,6 +50,7 @@ class AlbumRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->andWhere('a.nbPlays > 1')
             ->orderBy('a.nbPlays', 'DESC')
+            ->addOrderBy('a.lastListened', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()

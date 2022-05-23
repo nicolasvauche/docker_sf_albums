@@ -6,7 +6,7 @@
         </h2>
 
         <div class="actions">
-            <a href="{{ path('album.list') }}">
+            <a href="{{ path('stats.list') }}">
                 <i class="fas fa-list"></i>
                 liste
             </a>
@@ -29,7 +29,7 @@
             </h4>
         </div>
         <div class="grid-item">
-            <a href="{{ path('album.played') }}">
+            <a href="{{ path('stats.played') }}">
                 <i class="fas fa-headphones fa-4x"></i>
                 <h3 class="grid-item-title">
                     {{ albumsLastListened | length }} album{% if albumsLastListened | length > 1 %}s{% endif %} écouté{% if albumsLastListened | length > 1 %}s{% endif %}
@@ -40,7 +40,7 @@
             </h4>
         </div>
         <div class="grid-item">
-            <a href="{{ path('album.mostplayed') }}">
+            <a href="{{ path('stats.mostplayed') }}">
                 <i class="fas fa-heart fa-4x"></i>
                 <h3 class="grid-item-title">
                     {{ albumsPlayed | length }} album{% if albumsPlayed | length > 1 %}s{% endif %} écouté{% if albumsPlayed | length > 1 %}s{% endif %}
@@ -51,7 +51,7 @@
             </h4>
         </div>
         <div class="grid-item">
-            <a href="{{ path('album.notplayed') }}">
+            <a href="{{ path('stats.notplayed') }}">
                 <i class="fas fa-heart-broken fa-4x"></i>
                 <h3 class="grid-item-title">
                     {{ albumsNeverListened | length }} album{% if albumsNeverListened | length > 1 %}s{% endif %} jamais écouté{% if albumsNeverListened | length > 1 %}s{% endif %}
