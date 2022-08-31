@@ -46,6 +46,62 @@
         </section>
     {% endif %}
 
+    {% if albumsSeventies %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fas fa-star"></i>
+                    Magic 70ies
+                </h2>
+                <p>Les seventies quoi !</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsSeventies, 'home': true, 'show': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsEighties %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fa-brands fa-napster"></i>
+                    Surprising 80ies
+                </h2>
+                <p>Aaaah les années 80…</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsEighties, 'home': true, 'show': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsNineties %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fa-brands fa-spotify"></i>
+                    Powerful 90ies
+                </h2>
+                <p>Dans les années 90 ça dépotait pas mal :</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsNineties, 'home': true, 'show': true} %}
+        </section>
+    {% endif %}
+
+    {% if albumsActual %}
+        <section class="suggest">
+            <header>
+                <h2>
+                    <i class="fa-brands fa-soundcloud"></i>
+                    Et maintenant
+                </h2>
+                <p>Et depuis, ben il y a eu ça :</p>
+            </header>
+
+            {% include 'partials/_albums.html.twig' with {'albums': albumsActual, 'home': true, 'show': true} %}
+        </section>
+    {% endif %}
+
     {% if albumsLastListened %}
         <section class="lastlistened">
             <header>

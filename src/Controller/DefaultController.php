@@ -54,11 +54,26 @@ class DefaultController extends AbstractController
 
         $albumsPlayed = $albumRepository->findByMostPlayed();
         $albumsPlayed = array_slice($albumsPlayed, 0, 8);
-        // shuffle($albumsPlayed);
 
         $albumsNeverListened = $albumRepository->findByNeverListened();
         shuffle($albumsNeverListened);
         $albumsNeverListened = array_slice($albumsNeverListened, 0, 4);
+
+        $albumsSeventies = $albumRepository->findByEra('197');
+        shuffle($albumsSeventies);
+        $albumsSeventies = array_slice($albumsSeventies, 0, 4);
+
+        $albumsEighties = $albumRepository->findByEra('198');
+        shuffle($albumsEighties);
+        $albumsEighties = array_slice($albumsEighties, 0, 4);
+
+        $albumsNineties = $albumRepository->findByEra('199');
+        shuffle($albumsNineties);
+        $albumsNineties = array_slice($albumsNineties, 0, 4);
+
+        $albumsActual = $albumRepository->findByActual();
+        shuffle($albumsActual);
+        $albumsActual = array_slice($albumsActual, 0, 4);
 
         return $this->render('default/index.html.twig', [
             'suggestedCategories' => $suggestedCategories,
@@ -68,6 +83,10 @@ class DefaultController extends AbstractController
             'albumsPlayed' => $albumsPlayed,
             'albumsLastListened' => $albumRepository->findByLastListened(4),
             'albumsNeverListened' => $albumsNeverListened,
+            'albumsSeventies' => $albumsSeventies,
+            'albumsEighties' => $albumsEighties,
+            'albumsNineties' => $albumsNineties,
+            'albumsActual' => $albumsActual,
         ]);
     }
 }

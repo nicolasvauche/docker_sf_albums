@@ -53,8 +53,7 @@ class AlbumRepository extends ServiceEntityRepository
             ->addOrderBy('a.lastListened', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     public function findByLastListened(?int $limit = null)
@@ -64,8 +63,7 @@ class AlbumRepository extends ServiceEntityRepository
             ->orderBy('a.lastListened', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     public function findByNeverListened()
@@ -74,8 +72,29 @@ class AlbumRepository extends ServiceEntityRepository
             ->andWhere('a.lastListened IS NULL')
             ->orderBy('a.artist', 'ASC')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
+    }
+
+    public function findByEra(string $era, ?int $limit = null)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.year LIKE :year')
+            ->orderBy('a.year', 'ASC')
+            ->setMaxResults($limit)
+            ->setParameter('year', $era . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByActual(?int $limit = null)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.year > :year')
+            ->orderBy('a.year', 'ASC')
+            ->setMaxResults($limit)
+            ->setParameter('year', '1999')
+            ->getQuery()
+            ->getResult();
     }
 
     // /**

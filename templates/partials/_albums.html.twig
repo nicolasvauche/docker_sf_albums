@@ -29,7 +29,7 @@
                 <h3 class="grid-item-title">
                     <a href="{{ path('album.show', {'slug': album.slug}) }}">{{ album.title }}</a>
                 </h3>
-                {% if home is not defined %}
+                {% if home is not defined or show is defined %}
                     <h4 class="grid-item-subtitle">
                         {{ album.year }}
                     </h4>
