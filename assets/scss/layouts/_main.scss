@@ -22,11 +22,16 @@
             padding: 0 1.5em;
 
             @include respond(sm) {
+                position: sticky;
+                top: 4.75rem;
+                z-index: 9998;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 2rem;
+                padding: 0.5rem 1rem;
                 text-align: left;
+                background-color: inherit;
             }
 
             p {
