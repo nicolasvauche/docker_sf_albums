@@ -25,6 +25,12 @@ table {
                     background-color: $color-secondary;
                 }
             }
+
+            &:hover {
+                td {
+                    background-color: #bbb;
+                }
+            }
         }
     }
 }

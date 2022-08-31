@@ -55,7 +55,13 @@ class StatsController extends AbstractController
     {
         $albums = $albumRepository->findAll();
         usort($albums, function ($a, $b) {
+            if ($a->getArtist()->getName() === $b->getArtist()->getName()) {
+                return $a->getYear() > $b->getYear() ? 1 : -1;
+            }
+
             return $a->getArtist()->getName() > $b->getArtist()->getName() ? 1 : -1;
+
+
         });
 
         return $this->render('stats/albums/list.html.twig', [
