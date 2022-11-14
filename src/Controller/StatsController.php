@@ -68,4 +68,12 @@ class StatsController extends AbstractController
             'albums' => $albums,
         ]);
     }
+
+    #[Route('/derniers-arrives', name: 'stats.last', methods: ['GET'])]
+    public function last(AlbumRepository $albumRepository): Response
+    {
+        return $this->render('stats/albums/last.html.twig', [
+            'albums' => $albumRepository->findByLastArrived(),
+        ]);
+    }
 }

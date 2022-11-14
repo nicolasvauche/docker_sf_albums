@@ -97,6 +97,15 @@ class AlbumRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findByLastArrived(?int $limit = null)
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Album[] Returns an array of Album objects
     //  */
